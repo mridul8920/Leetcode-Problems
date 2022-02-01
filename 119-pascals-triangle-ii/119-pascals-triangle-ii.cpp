@@ -12,12 +12,24 @@ public:
         // return arr[rowIndex];
         
         // Method--2 (The basic idea is to iteratively update the array from the end to the beginning.) TC-> O(K)
-        vector<int>arr(rowIndex+1,0); //Intitialising all the elements of vector with zero. 
-        arr[0]=1;   //We know that first and last element are 1 always
-        for(int i=1;i<(rowIndex+1);i++){   //loop starting  from 1 as arr[0] already assigned
-            for(int j=i;j>=1;j--){
-                arr[j]+=arr[j-1];       
-            }        
+        // vector<int>arr(rowIndex+1,0); //Intitialising all the elements of vector with zero. 
+        // arr[0]=1;   //We know that first and last element are 1 always
+        // for(int i=1;i<(rowIndex+1);i++){   //loop starting  from 1 as arr[0] already assigned
+        //     for(int j=i;j>=1;j--){
+        //         arr[j]+=arr[j-1];       
+        //     }        
+        // }
+        // return arr;
+        // Method--3
+        vector<int>arr(rowIndex+1);
+        arr[0]=1;
+        // nC0 = 1
+        long long int prev=1,cur;
+        for(int i=1;i<(rowIndex+1);i++){
+            // nCr = (nCr-1 * (n - r + 1))/r
+            cur=(prev*(rowIndex-i+1))/i;
+            arr[i]=cur;
+            prev=cur;
         }
         return arr;
     }
