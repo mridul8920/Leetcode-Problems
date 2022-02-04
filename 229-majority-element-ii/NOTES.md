@@ -1,1 +1,1 @@
-​
+Apply -> Boyer Moore's Voting Algo
