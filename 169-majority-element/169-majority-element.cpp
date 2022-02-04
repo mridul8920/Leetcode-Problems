@@ -1,17 +1,15 @@
 class Solution {
 public:
     int majorityElement(vector<int>& nums) {
-        unordered_map<int,int>m;
-        for(int i=0;i<nums.size();i++){
-            m[nums[i]]++;
+        //MOORE'S VOTING ALGO
+            int count=0,ele=0;
+        for(int it:nums){
+            if(count==0)
+                ele=it;
+            if(it==ele)
+                count+=1;
+            else count-=1;
         }
-        int ans=0;
-        for(auto it:m){
-            if(it.second>floor(nums.size()/2)){
-                ans=it.first;
-                break;
-            }
-        }
-        return ans;
+        return ele;
     }
 };
