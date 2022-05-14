@@ -12,19 +12,21 @@
 class Solution {
 public:
     vector<int> inorderTraversal(TreeNode* root) {
+        //Iterative  Aprpoach
+        //TC-O(N)    SC->O(N)
+        if(root==NULL)
+            return {};
         vector<int>ans;
         stack<TreeNode*>s;
-        if(root==NULL)
-            return ans;
         TreeNode* cur=root;
-        while(cur!=NULL || s.empty()==false){
+        while(!s.empty() or cur!=NULL){
             while(cur!=NULL){
                 s.push(cur);
                 cur=cur->left;
             }
             cur=s.top();
-            s.pop();
             ans.push_back(cur->val);
+            s.pop();
             cur=cur->right;
         }
         return ans;
