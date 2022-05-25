@@ -34,14 +34,7 @@ class Solution
             if(root->data==K){
                 return 0;
             }
-            if(K>root->data){
-                diff=min(diff,abs(root->data-K));
-                root=root->right;
-            }
-            else{
-                diff=min(diff,abs(root->data-K));
-                root=root->left;
-            }
+            root=K>root->data?root->right:root->left;
         }
         return diff;
     }
